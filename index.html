@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayurveda Education Reform Platform</title>
+    <title>Dr. Kembhavi's Voice of Ayurveda Platform</title>
+    <meta name="description" content="A platform to share your views about academic, clinical, research, administrative and development reforms in Ayurveda">
     <style>
         * {
             margin: 0;
@@ -44,7 +45,16 @@
             text-align: center;
             color: #666;
             font-size: 1.2em;
-            font-style: italic;
+            font-weight: bold;
+        }
+        
+        .description {
+            text-align: center;
+            color: #555;
+            font-size: 1em;
+            margin-top: 10px;
+            padding: 0 20px;
+            line-height: 1.8;
         }
         
         .nav-tabs {
@@ -156,6 +166,12 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
+        .btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .posts-container {
             margin-top: 30px;
         }
@@ -171,7 +187,7 @@
         
         .post-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
             flex-wrap: wrap;
@@ -273,13 +289,138 @@
             border-radius: 2px;
         }
         
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        .empty-state-text {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .empty-state-subtext {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        
+        .login-prompt {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .login-prompt h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .stats-banner {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .stat-box h3 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+        
+        .stat-box p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .cta-banner {
+            margin-top: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .cta-banner h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border: none;
+        }
+        
+        .cta-banner p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        footer h3 {
+            margin-bottom: 15px;
+        }
+        
+        footer p {
+            margin: 15px 0;
+            opacity: 0.8;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
             }
             
             h1 {
-                font-size: 2em;
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .description {
+                font-size: 0.9em;
             }
             
             .nav-tabs {
@@ -303,30 +444,37 @@
             .timeline-date {
                 margin-bottom: 10px;
             }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Dr Kembhavi's Ayurveda Education Reform Platform</h1>
-            <p class="subtitle">Reclaiming Our Sacred Purpose Through United Action</p>
+            <h1>🕉️ Dr. Kembhavi's Voice of Ayurveda</h1>
+            <p class="subtitle">Ayurveda Reform Platform</p>
+            <p class="description">
+                A platform to share your views about <strong>Academic, Clinical, Research, Administrative</strong> and <strong>Development Reforms in Ayurveda</strong>
+            </p>
         </header>
         
         <div class="nav-tabs">
-            <button class="tab-button active" onclick="showTab('forums')">📢 Educator Forums</button>
-            <button class="tab-button" onclick="showTab('coalition')">🤝 Coalition Network</button>
-            <button class="tab-button" onclick="showTab('compliance')">📋 Compliance Tracker</button>
+            <button class="tab-button active" onclick="showTab('forums')">📢 Discussion Forum</button>
+            <button class="tab-button" onclick="showTab('coalition')">🤝 Community Network</button>
+            <button class="tab-button" onclick="showTab('compliance')">📋 Documentation Tracker</button>
             <button class="tab-button" onclick="showTab('proposals')">📝 Reform Proposals</button>
         </div>
         
         <!-- Forums Tab -->
         <div id="forums" class="tab-content active">
-            <h2>Educator Forums & Discussion Boards</h2>
-            <p><em>"Where the mind is without fear and the head is held high"</em> - Rabindranath Tagore</p>
+            <h2>Discussion Forum - Share Your Views</h2>
+            <p style="margin-bottom: 20px;"><em>"Express your perspectives on Academic, Clinical, Research, Administrative and Development aspects of Ayurveda"</em></p>
             
             <div class="post-form">
-                <h3>Share Your Voice</h3>
+                <h3>Share Your Views</h3>
                 <div class="form-group">
                     <label>Post As:</label>
                     <select id="anonymity">
@@ -336,13 +484,14 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Category:</label>
+                    <label>Reform Category:</label>
                     <select id="category">
-                        <option value="regulatory">Regulatory Issues</option>
-                        <option value="teaching">Teaching Challenges</option>
-                        <option value="inspection">Inspection Experiences</option>
-                        <option value="solutions">Proposed Solutions</option>
-                        <option value="support">Need Support</option>
+                        <option value="academic">Academic Reforms</option>
+                        <option value="clinical">Clinical Practice Reforms</option>
+                        <option value="research">Research & Development</option>
+                        <option value="administrative">Administrative Issues</option>
+                        <option value="development">Development Initiatives</option>
+                        <option value="regulatory">Regulatory Challenges</option>
                     </select>
                 </div>
                 
@@ -352,130 +501,132 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Your Message:</label>
-                    <textarea id="message" placeholder="Share your experiences, challenges, or ideas..."></textarea>
+                    <label>Your Views & Suggestions:</label>
+                    <textarea id="message" placeholder="Share your experiences, observations, challenges, or reform suggestions..."></textarea>
                 </div>
                 
-                <button class="btn" onclick="submitPost()">Post Message</button>
+                <button class="btn" onclick="submitPost()" id="submitPostBtn">Share Your Views</button>
             </div>
             
             <div class="posts-container" id="posts-container">
-                <!-- Sample posts will be added here -->
+                <!-- Posts will be dynamically added here -->
             </div>
         </div>
         
         <!-- Coalition Tab -->
         <div id="coalition" class="tab-content">
-            <h2>Coalition Building Network</h2>
-            <p><em>"Unity is strength... when there is teamwork and collaboration, wonderful things can be achieved"</em> - Mattie Stepanek</p>
+            <h2>Community Network</h2>
+            <p style="margin-bottom: 20px;"><em>"Connect with Ayurveda professionals committed to meaningful reforms"</em></p>
             
             <div class="coalition-grid">
                 <div class="coalition-card">
                     <h3 class="card-title">🏥 Register Your Institution</h3>
-                    <p>Join the growing network of Ayurveda colleges committed to educational reform.</p>
+                    <p>Join the network of Ayurveda professionals working towards reform.</p>
                     <div class="form-group">
-                        <input type="text" placeholder="Institution Name">
+                        <input type="text" id="coalition-institution" placeholder="Institution/Organization Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Location (State)">
+                        <input type="text" id="coalition-location" placeholder="Location (City/State)">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Contact Email">
+                        <input type="email" id="coalition-email" placeholder="Contact Email">
                     </div>
-                    <button class="btn">Join Coalition</button>
+                    <button class="btn" onclick="joinCoalition()">Join Network</button>
                 </div>
                 
                 <div class="coalition-card">
-                    <h3 class="card-title">📊 Current Coalition</h3>
+                    <h3 class="card-title">📊 Network Statistics</h3>
                     <p><strong>Member Institutions:</strong> <span id="member-count">0</span></p>
-                    <p><strong>States Represented:</strong> <span id="states-count">0</span></p>
-                    <p><strong>Active Campaigns:</strong> <span id="campaigns-count">0</span></p>
-                    <button class="btn">View Member Directory</button>
+                    <p><strong>Locations Represented:</strong> <span id="states-count">0</span></p>
+                    <p><strong>Active Discussions:</strong> <span id="campaigns-count">0</span></p>
+                    <p style="margin-top: 20px; color: #666; font-size: 14px;">Together we can create meaningful change in Ayurveda education and practice.</p>
                 </div>
                 
                 <div class="coalition-card">
-                    <h3 class="card-title">📢 Launch Campaign</h3>
-                    <p>Start a coordinated effort to address specific regulatory issues.</p>
+                    <h3 class="card-title">📢 Initiate Discussion</h3>
+                    <p>Start focused discussions on specific reform topics.</p>
                     <div class="form-group">
-                        <input type="text" placeholder="Campaign Title">
+                        <input type="text" id="campaign-title" placeholder="Discussion Topic">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Campaign Description"></textarea>
+                        <textarea id="campaign-description" placeholder="Topic Description" style="height: 80px;"></textarea>
                     </div>
-                    <button class="btn">Create Campaign</button>
+                    <button class="btn" onclick="createCampaign()">Start Discussion</button>
                 </div>
                 
                 <div class="coalition-card">
-                    <h3 class="card-title">📅 Upcoming Events</h3>
-                    <p>Coordinate meetings and strategic discussions.</p>
+                    <h3 class="card-title">📅 Collaborative Events</h3>
+                    <p>Coordinate meetings and knowledge-sharing sessions.</p>
                     <div style="margin: 15px 0;">
-                        <strong>Next Virtual Meeting:</strong><br>
-                        <span style="color: #666;">Date: To be scheduled</span>
+                        <strong>Upcoming Events:</strong><br>
+                        <span style="color: #666;">Will be scheduled based on community needs</span>
                     </div>
-                    <button class="btn">Schedule Meeting</button>
+                    <button class="btn" onclick="scheduleEvent()">Propose Event</button>
                 </div>
             </div>
         </div>
         
         <!-- Compliance Tab -->
         <div id="compliance" class="tab-content">
-            <h2>Regulatory Compliance Tracker</h2>
-            <p><em>"Documentation without education is the bureaucracy of ignorance"</em></p>
+            <h2>Documentation & Compliance Tracker</h2>
+            <p style="margin-bottom: 20px;"><em>"Track and document the administrative requirements affecting Ayurveda institutions"</em></p>
             
             <div class="compliance-timeline">
-                <h3>Your Inspection Timeline</h3>
-                <div class="timeline-item">
-                    <div class="timeline-date">Jan 2025</div>
-                    <div>
-                        <strong>NCISM Annual Inspection</strong><br>
-                        Status: Completed ✅<br>
-                        Documents Required: 47 files, 320 pages
-                    </div>
+                <h3>Document Your Compliance Activities</h3>
+                <p style="margin-bottom: 20px; color: #666;">Record inspection schedules and documentation requirements to build evidence for reform discussions.</p>
+                
+                <div class="form-group">
+                    <label>Regulatory Body:</label>
+                    <select id="inspection-body">
+                        <option value="NCISM">NCISM</option>
+                        <option value="QCI">QCI</option>
+                        <option value="NAAC">NAAC</option>
+                        <option value="NABH">NABH</option>
+                        <option value="State Board">State Board</option>
+                        <option value="University">University</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
                 
-                <div class="timeline-item upcoming">
-                    <div class="timeline-date">Mar 2025</div>
-                    <div>
-                        <strong>QCI Quality Assessment</strong><br>
-                        Status: Upcoming ⏰<br>
-                        Preparation Time: 45 days remaining
-                    </div>
+                <div class="form-group">
+                    <label>Activity Date:</label>
+                    <input type="date" id="inspection-date">
                 </div>
                 
-                <div class="timeline-item upcoming">
-                    <div class="timeline-date">Jun 2025</div>
-                    <div>
-                        <strong>NAAC Accreditation Review</strong><br>
-                        Status: Scheduled ⏰<br>
-                        Documents Due: May 15, 2025
-                    </div>
+                <div class="form-group">
+                    <label>Documents Required:</label>
+                    <input type="number" id="docs-required" placeholder="Number of documents">
                 </div>
                 
-                <div class="timeline-item upcoming">
-                    <div class="timeline-date">Sep 2025</div>
-                    <div>
-                        <strong>NABH Hospital Standards</strong><br>
-                        Status: Upcoming ⏰<br>
-                        Pre-assessment required
-                    </div>
+                <div class="form-group">
+                    <label>Time Spent (Hours):</label>
+                    <input type="number" id="hours-spent" placeholder="Total hours spent">
+                </div>
+                
+                <button class="btn" onclick="addInspection()">Add Record</button>
+                
+                <div id="inspection-list" style="margin-top: 30px;">
+                    <!-- Inspection records will appear here -->
                 </div>
             </div>
             
-            <div class="compliance-timeline">
-                <h3>Compliance Cost Calculator</h3>
+            <div class="compliance-timeline" style="margin-top: 30px;">
+                <h3>Administrative Burden Calculator</h3>
+                <p style="margin-bottom: 20px; color: #666;">Calculate the time and resources spent on administrative compliance.</p>
+                
                 <div class="form-group">
-                    <label>Average hours spent on inspection preparation per month:</label>
+                    <label>Average hours per month on documentation:</label>
                     <input type="number" id="hours" placeholder="e.g., 120">
                 </div>
                 <div class="form-group">
-                    <label>Number of staff involved in compliance:</label>
+                    <label>Number of staff involved:</label>
                     <input type="number" id="staff" placeholder="e.g., 8">
                 </div>
                 <div class="form-group">
-                    <label>Average hourly cost per staff member:</label>
+                    <label>Average hourly cost per staff (₹):</label>
                     <input type="number" id="cost" placeholder="e.g., 500">
                 </div>
-                <button class="btn" onclick="calculateComplianceCost()">Calculate Annual Cost</button>
+                <button class="btn" onclick="calculateComplianceCost()">Calculate Impact</button>
                 <div id="cost-result" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
             </div>
         </div>
@@ -483,98 +634,144 @@
         <!-- Proposals Tab -->
         <div id="proposals" class="tab-content">
             <h2>Reform Proposal Generator</h2>
-            <p><em>"Be the change you wish to see in the world"</em> - Mahatma Gandhi</p>
+            <p style="margin-bottom: 20px;"><em>"Create structured proposals for Academic, Clinical, Research, Administrative, and Development reforms"</em></p>
             
             <div class="proposal-builder">
-                <h3>Create a Reform Proposal</h3>
+                <h3>Create Your Reform Proposal</h3>
                 
                 <div class="form-group">
-                    <label>Proposal Title:</label>
-                    <input type="text" id="proposal-title" placeholder="e.g., Streamlining NCISM Documentation Requirements">
+                    <label>Proposal Title: *</label>
+                    <input type="text" id="proposal-title" placeholder="e.g., Enhancing Clinical Training in Ayurveda Curriculum">
                 </div>
                 
                 <div class="form-group">
-                    <label>Current Problem:</label>
-                    <textarea id="current-problem" placeholder="Describe the current issue in detail..."></textarea>
+                    <label>Reform Area:</label>
+                    <select id="proposal-category">
+                        <option value="Academic">Academic Reforms</option>
+                        <option value="Clinical">Clinical Practice</option>
+                        <option value="Research">Research & Development</option>
+                        <option value="Administrative">Administrative Improvements</option>
+                        <option value="Development">Development Initiatives</option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
-                    <label>Proposed Solution:</label>
-                    <textarea id="proposed-solution" placeholder="Describe your proposed solution..."></textarea>
+                    <label>Current Situation/Challenge: *</label>
+                    <textarea id="current-problem" placeholder="Describe the current situation or challenge that needs reform..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Proposed Reform/Solution: *</label>
+                    <textarea id="proposed-solution" placeholder="Describe your proposed reform or solution..."></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label>Expected Benefits:</label>
-                    <textarea id="expected-benefits" placeholder="List the benefits of implementing this proposal..."></textarea>
+                    <textarea id="expected-benefits" placeholder="List the potential benefits of implementing this reform..."></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Supporting Data/Examples:</label>
-                    <textarea id="supporting-data" placeholder="Provide any data, statistics, or examples that support your proposal..."></textarea>
+                    <label>Supporting Evidence/Examples:</label>
+                    <textarea id="supporting-data" placeholder="Provide any data, examples, or evidence supporting your proposal..."></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label>Implementation Timeline:</label>
-                    <textarea id="implementation" placeholder="Suggest a realistic timeline for implementation..."></textarea>
+                    <label>Implementation Approach:</label>
+                    <textarea id="implementation" placeholder="Suggest steps for implementation..."></textarea>
                 </div>
                 
-                <button class="btn" onclick="generateProposal()">Generate Formal Proposal</button>
+                <button class="btn" onclick="generateProposal()">Generate Proposal Document</button>
                 
                 <div id="generated-proposal" style="display: none; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
                     <h3>Generated Proposal Document</h3>
                     <div id="proposal-content"></div>
-                    <button class="btn" onclick="downloadProposal()">Download as PDF</button>
+                    <button class="btn" style="margin-top: 20px;" onclick="copyProposal()">Copy to Clipboard</button>
                 </div>
             </div>
         </div>
+        
+        <!-- Statistics Banner -->
+        <div class="stats-banner">
+            <h2 style="text-align: center; margin-bottom: 30px;">📊 Platform Activity</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3 id="total-posts">0</h3>
+                    <p>Views Shared</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="active-discussions">0</h3>
+                    <p>Active Discussions</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="reform-proposals">0</h3>
+                    <p>Reform Proposals</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="total-engagement">0</h3>
+                    <p>Total Contributions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Banner -->
+        <div class="cta-banner">
+            <h2>🕉️ Join the Conversation on Ayurveda Reform</h2>
+            <p>
+                Your perspectives on academic, clinical, research, administrative, and development reforms in Ayurveda are valuable. Share your views, connect with like-minded professionals, and contribute to meaningful change.
+            </p>
+            <div class="cta-buttons">
+                <button class="btn" onclick="showTab('forums')" style="font-size: 16px;">
+                    📢 Share Your Views
+                </button>
+                <button class="btn" onclick="showTab('coalition')" style="font-size: 16px;">
+                    🤝 Join Network
+                </button>
+                <button class="btn" onclick="showTab('proposals')" style="font-size: 16px;">
+                    📝 Create Proposal
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <h3>Dr. Kembhavi's Voice of Ayurveda Platform</h3>
+            <p style="margin: 15px 0;">
+                A platform dedicated to fostering dialogue and driving reforms in Academic, Clinical, Research, Administrative, and Development aspects of Ayurveda
+            </p>
+            <div style="margin-top: 20px;">
+                <p><strong>Mission:</strong> Empowering Ayurveda professionals to share perspectives and shape the future of Ayurvedic education and practice</p>
+                <p style="font-size: 14px; margin-top: 20px; opacity: 0.7;">
+                    © <span id="current-year"></span> Dr. Kembhavi's Voice of Ayurveda Platform | 
+                    All Rights Reserved
+                </p>
+            </div>
+        </footer>
     </div>
     
     <script>
-        // Sample data for demonstration
-        let posts = [
-            {
-                id: 1,
-                author: "Anonymous Educator",
-                date: "2025-01-15",
-                category: "regulatory",
-                subject: "NCISM Documentation Burden",
-                content: "We spent 200+ hours preparing for the last NCISM inspection, time that could have been used for actual teaching. The focus has shifted from education to documentation."
-            },
-            {
-                id: 2,
-                author: "Dr. Anonymous",
-                date: "2025-01-14",
-                category: "teaching",
-                subject: "Lost Passion for Teaching",
-                content: "After 15 years of teaching Ayurveda, I find myself more stressed about compliance than excited about sharing ancient wisdom. Our students deserve better."
-            }
-        ];
-        
-        let memberCount = 0;
-        let statesCount = 0;
-        let campaignsCount = 0;
+        // Initialize empty data structures
+        let posts = [];
+        let coalitionMembers = [];
+        let campaigns = [];
+        let proposals = [];
+        let inspections = [];
         
         // Tab functionality
         function showTab(tabName) {
-            // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
             
-            // Remove active class from buttons
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // Show selected tab
             document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked button
             event.target.classList.add('active');
         }
         
         // Forum functionality
         function submitPost() {
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
             const category = document.getElementById('category').value;
             const anonymity = document.getElementById('anonymity').value;
             
@@ -584,8 +781,8 @@
             }
             
             const newPost = {
-                id: posts.length + 1,
-                author: anonymity === 'anonymous' ? 'Anonymous Educator' : 'Registered User',
+                id: Date.now(),
+                author: anonymity === 'anonymous' ? 'Anonymous Contributor' : 'Registered User',
                 date: new Date().toISOString().split('T')[0],
                 category: category,
                 subject: subject,
@@ -593,22 +790,45 @@
             };
             
             posts.unshift(newPost);
+            localStorage.setItem('forum_posts', JSON.stringify(posts));
+            
             displayPosts();
             
-            // Clear form
             document.getElementById('subject').value = '';
             document.getElementById('message').value = '';
             
-            alert('Your post has been submitted successfully!');
+            updateStats();
+            alert('Your views have been shared successfully! Thank you for contributing to the dialogue.');
         }
         
         function displayPosts() {
             const container = document.getElementById('posts-container');
             container.innerHTML = '';
             
+            if (posts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">💬</div>
+                        <div class="empty-state-text">No discussions yet</div>
+                        <div class="empty-state-subtext">Be the first to share your views on Ayurveda reforms!</div>
+                    </div>
+                `;
+                return;
+            }
+            
             posts.forEach(post => {
                 const postElement = document.createElement('div');
                 postElement.className = 'post-item';
+                
+                const categoryLabels = {
+                    'academic': 'Academic Reforms',
+                    'clinical': 'Clinical Practice',
+                    'research': 'Research & Development',
+                    'administrative': 'Administrative',
+                    'development': 'Development',
+                    'regulatory': 'Regulatory'
+                };
+                
                 postElement.innerHTML = `
                     <div class="post-header">
                         <span class="post-author">${post.author}</span>
@@ -616,275 +836,231 @@
                     </div>
                     <h4>${post.subject}</h4>
                     <div class="post-content">${post.content}</div>
-                    <span class="post-category">${post.category}</span>
+                    <span class="post-category">${categoryLabels[post.category] || post.category}</span>
                 `;
                 container.appendChild(postElement);
             });
         }
         
-        // Compliance cost calculator
-        function calculateComplianceCost() {
-            const hours = parseFloat(document.getElementById('hours').value) || 0;
-            const staff = parseFloat(document.getElementById('staff').value) || 0;
-            const cost = parseFloat(document.getElementById('cost').value) || 0;
-            
-            const monthlyComplianceCost = hours * staff * cost;
-            const annualComplianceCost = monthlyComplianceCost * 12;
-            
-            const resultDiv = document.getElementById('cost-result');
-            resultDiv.innerHTML = `
-                <div style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107;">
-                    <strong>Monthly Compliance Cost:</strong> ₹${monthlyComplianceCost.toLocaleString()}<br>
-                    <strong>Annual Compliance Cost:</strong> ₹${annualComplianceCost.toLocaleString()}<br>
-                    <small style="color: #856404;">This represents time and resources not spent on actual education</small>
-                </div>
-            `;
-        }
-        
-        // Proposal generator
-        function generateProposal() {
-            const title = document.getElementById('proposal-title').value;
-            const problem = document.getElementById('current-problem').value;
-            const solution = document.getElementById('proposed-solution').value;
-            const benefits = document.getElementById('expected-benefits').value;
-            const data = document.getElementById('supporting-data').value;
-            const implementation = document.getElementById('implementation').value;
-            
-            if (!title || !problem || !solution) {
-                alert('Please fill in at least the title, problem, and solution fields.');
-                return;
-            }
-            
-            const proposalContent = `
-                <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                    <h2 style="color: #2c3e50; border-bottom: 2px solid #667eea; padding-bottom: 10px;">${title}</h2>
-                    
-                    <h3 style="color: #2c3e50; margin-top: 25px;">Current Problem Statement</h3>
-                    <p style="margin-bottom: 20px;">${problem}</p>
-                    
-                    <h3 style="color: #2c3e50; margin-top: 25px;">Proposed Solution</h3>
-                    <p style="margin-bottom: 20px;">${solution}</p>
-                    
-                    ${benefits ? `<h3 style="color: #2c3e50; margin-top: 25px;">Expected Benefits</h3><p style="margin-bottom: 20px;">${benefits}</p>` : ''}
-                    
-                    ${data ? `<h3 style="color: #2c3e50; margin-top: 25px;">Supporting Evidence</h3><p style="margin-bottom: 20px;">${data}</p>` : ''}
-                    
-                    ${implementation ? `<h3 style="color: #2c3e50; margin-top: 25px;">Implementation Timeline</h3><p style="margin-bottom: 20px;">${implementation}</p>` : ''}
-                    
-                    <div style="margin-top: 30px; padding: 15px; background: #e8f4fd; border-left: 4px solid #667eea;">
-                        <p style="margin: 0; font-style: italic;">"The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy." - Martin Luther King Jr.</p>
-                    </div>
-                    
-                    <p style="margin-top: 20px; text-align: right; color: #666;">
-                        Generated on: ${new Date().toLocaleDateString()}<br>
-                        Ayurveda Education Reform Platform
-                    </p>
-                </div>
-            `;
-            
-            document.getElementById('proposal-content').innerHTML = proposalContent;
-            document.getElementById('generated-proposal').style.display = 'block';
-        }
-        
-        function downloadProposal() {
-            alert('PDF download functionality will be implemented in the next phase. For now, you can copy and paste the generated proposal content.');
-        }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            displayPosts();
-            
-            // Update coalition stats (demo)
-            document.getElementById('member-count').textContent = '0';
-            document.getElementById('states-count').textContent = '0';  
-            document.getElementById('campaigns-count').textContent = '0';
-        });
-    </script>
-</body>
-<!-- Enhanced Features Section -->
-    <div style="margin-top: 50px; padding: 30px; background: rgba(255, 255, 255, 0.95); border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-        <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">🔥 Platform Statistics</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
-            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 10px;">
-                <h3 id="total-posts">Loading...</h3>
-                <p>Forum Posts</p>
-            </div>
-            <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 20px; border-radius: 10px;">
-                <h3 id="active-discussions">Loading...</h3>
-                <p>Active Discussions</p>
-            </div>
-            <div style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; padding: 20px; border-radius: 10px;">
-                <h3 id="reform-proposals">Loading...</h3>
-                <p>Reform Proposals</p>
-            </div>
-            <div style="background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; padding: 20px; border-radius: 10px;">
-                <h3 id="total-engagement">Loading...</h3>
-                <p>Community Reactions</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Call to Action Banner -->
-    <div style="margin-top: 40px; padding: 40px; background: linear-gradient(135deg, #ff9a9e, #fecfef); border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-        <h2 style="color: #2c3e50; margin-bottom: 20px;">🕉️ "Be the Change You Wish to See" - Gandhi</h2>
-        <p style="font-size: 18px; color: #666; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Every voice matters in our movement to reclaim the sacred purpose of Ayurvedic education. 
-            Join thousands of educators, students, and institutions working together for meaningful reform.
-        </p>
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <button class="btn" onclick="showTab('forums')" style="font-size: 16px;">
-                📢 Share Your Experience
-            </button>
-            <button class="btn" onclick="showTab('coalition')" style="font-size: 16px;">
-                🤝 Join the Coalition
-            </button>
-            <button class="btn" onclick="showTab('proposals')" style="font-size: 16px;">
-                📝 Create Reform Proposal
-            </button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer style="margin-top: 50px; padding: 30px; background: rgba(44, 62, 80, 0.9); color: white; border-radius: 15px; text-align: center;">
-        <h3>Ayurveda Education Reform Platform</h3>
-        <p style="margin: 15px 0; opacity: 0.8;">
-            "The ultimate measure of a man is not where he stands in moments of comfort and convenience, 
-            but where he stands at times of challenge and controversy." - Martin Luther King Jr.
-        </p>
-        <div style="margin-top: 20px;">
-            <p><strong>Contact:</strong> Together we rise, divided we fall</p>
-            <p><strong>Mission:</strong> Reclaiming the soul of Ayurvedic education</p>
-            <p style="font-size: 14px; margin-top: 20px; opacity: 0.7;">
-                Built with ❤️ for the sacred tradition of Ayurveda | 
-                <span id="current-year">2025</span> | 
-                Open Source on GitHub
-            </p>
-        </div>
-    </footer>
-
-    <!-- Load the enhanced JavaScript functionality -->
-    <script src="app.js"></script>
-    <script src="auth.js"></script>
-    <script src="whatsapp-integration.js"></script>
-    <!-- Additional inline JavaScript for immediate features -->
-    <script>
-        // Update statistics when page loads
-        function updatePlatformStats() {
-            try {
-                const posts = JSON.parse(localStorage.getItem('forum_posts') || '[]');
-                const members = JSON.parse(localStorage.getItem('coalition_members') || '[]');
-                const proposals = JSON.parse(localStorage.getItem('proposals') || '[]');
-                
-                // Calculate total reactions
-                let totalReactions = 0;
-                posts.forEach(post => {
-                    if (post.reactions) {
-                        totalReactions += (post.reactions.support || 0) + 
-                                        (post.reactions.helpful || 0) + 
-                                        (post.reactions.concerned || 0);
-                    }
-                });
-                
-                document.getElementById('total-posts').textContent = posts.length || 3;
-                document.getElementById('active-discussions').textContent = posts.filter(p => 
-                    new Date(p.date) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
-                ).length || 2;
-                document.getElementById('reform-proposals').textContent = proposals.length || 0;
-                document.getElementById('total-engagement').textContent = totalReactions || 83;
-            } catch (error) {
-                console.log('Using default statistics');
-                document.getElementById('total-posts').textContent = '3';
-                document.getElementById('active-discussions').textContent = '2';
-                document.getElementById('reform-proposals').textContent = '0';
-                document.getElementById('total-engagement').textContent = '83';
-            }
-        }
-        
-        // Enhanced coalition joining
+        // Coalition functionality
         function joinCoalition() {
-            const institutionName = document.querySelector('input[placeholder="Institution Name"]').value;
-            const location = document.querySelector('input[placeholder="Location (State)"]').value;
-            const email = document.querySelector('input[placeholder="Contact Email"]').value;
+            const institution = document.getElementById('coalition-institution').value.trim();
+            const location = document.getElementById('coalition-location').value.trim();
+            const email = document.getElementById('coalition-email').value.trim();
             
-            if (!institutionName || !location || !email) {
-                alert('Please fill in all fields to join the coalition.');
+            if (!institution || !location || !email) {
+                alert('Please fill in all fields to join the network.');
                 return;
             }
             
-            // Save to localStorage
-            const members = JSON.parse(localStorage.getItem('coalition_members') || '[]');
             const newMember = {
                 id: Date.now(),
-                institutionName: institutionName,
+                institution: institution,
                 state: location,
                 email: email,
                 joinDate: new Date().toISOString().split('T')[0]
             };
             
-            members.push(newMember);
-            localStorage.setItem('coalition_members', JSON.stringify(members));
+            coalitionMembers.push(newMember);
+            localStorage.setItem('coalition_members', JSON.stringify(coalitionMembers));
             
-            // Update display
-            const states = [...new Set(members.map(m => m.state))];
-            document.getElementById('member-count').textContent = members.length;
-            document.getElementById('states-count').textContent = states.length;
+            document.getElementById('coalition-institution').value = '';
+            document.getElementById('coalition-location').value = '';
+            document.getElementById('coalition-email').value = '';
             
-            // Clear form
-            document.querySelector('input[placeholder="Institution Name"]').value = '';
-            document.querySelector('input[placeholder="Location (State)"]').value = '';
-            document.querySelector('input[placeholder="Contact Email"]').value = '';
-            
-            // Show success message
-            alert(`Welcome to the coalition! ${institutionName} has been added. Together we are ${members.length} institutions strong!`);
-            
-            updatePlatformStats();
+            updateCoalitionStats();
+            updateStats();
+            alert(`Welcome to the network! ${institution} has been added. Together we grow stronger!`);
         }
         
-        // Enhanced proposal generation with template selection
-        function generateProposal() {
-            const title = document.getElementById('proposal-title').value;
-            const problem = document.getElementById('current-problem').value;
-            const solution = document.getElementById('proposed-solution').value;
-            const benefits = document.getElementById('expected-benefits').value;
-            const data = document.getElementById('supporting-data').value;
-            const implementation = document.getElementById('implementation').value;
+        function updateCoalitionStats() {
+            const states = [...new Set(coalitionMembers.map(m => m.state))];
+            document.getElementById('member-count').textContent = coalitionMembers.length;
+            document.getElementById('states-count').textContent = states.length;
+            document.getElementById('campaigns-count').textContent = campaigns.length;
+        }
+        
+        function createCampaign() {
+            const title = document.getElementById('campaign-title').value.trim();
+            const description = document.getElementById('campaign-description').value.trim();
             
-            if (!title || !problem || !solution) {
-                alert('Please fill in at least the title, problem, and solution fields.');
+            if (!title || !description) {
+                alert('Please provide both discussion topic and description.');
                 return;
             }
             
-            // Save proposal
-            const proposals = JSON.parse(localStorage.getItem('proposals') || '[]');
-            const newProposal = {
+            const newCampaign = {
                 id: Date.now(),
                 title: title,
+                description: description,
+                startDate: new Date().toISOString().split('T')[0],
+                status: 'active'
+            };
+            
+            campaigns.push(newCampaign);
+            localStorage.setItem('campaigns', JSON.stringify(campaigns));
+            
+            document.getElementById('campaign-title').value = '';
+            document.getElementById('campaign-description').value = '';
+            
+            updateCoalitionStats();
+            alert('Discussion topic created successfully! Share it with your network.');
+        }
+        
+        function scheduleEvent() {
+            alert('Event coordination feature - connect with the community to schedule collaborative events!');
+        }
+        
+        // Compliance functionality
+        function addInspection() {
+            const body = document.getElementById('inspection-body').value;
+            const date = document.getElementById('inspection-date').value;
+            const docs = document.getElementById('docs-required').value;
+            const hours = document.getElementById('hours-spent').value;
+            
+            if (!date || !docs || !hours) {
+                alert('Please fill in all compliance activity details.');
+                return;
+            }
+            
+            const inspection = {
+                id: Date.now(),
+                body: body,
+                date: date,
+                documentsRequired: parseInt(docs),
+                hoursSpent: parseInt(hours)
+            };
+            
+            inspections.push(inspection);
+            localStorage.setItem('inspections', JSON.stringify(inspections));
+            
+            displayInspections();
+            
+            document.getElementById('inspection-date').value = '';
+            document.getElementById('docs-required').value = '';
+            document.getElementById('hours-spent').value = '';
+            
+            alert('Compliance record added successfully! This data contributes to understanding administrative burden.');
+        }
+        
+        function displayInspections() {
+            const container = document.getElementById('inspection-list');
+            
+            if (inspections.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📋</div>
+                        <div class="empty-state-text">No records yet</div>
+                        <div class="empty-state-subtext">Start documenting compliance activities to track administrative requirements.</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '<h4 style="margin-bottom: 15px;">Your Compliance Records:</h4>';
+            
+            inspections.forEach(inspection => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = `
+                    <div class="timeline-date">${inspection.date}</div>
+                    <div>
+                        <strong>${inspection.body} Activity</strong><br>
+                        Documents Required: ${inspection.documentsRequired} | 
+                        Time Spent: ${inspection.hoursSpent} hours
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+        
+        function calculateComplianceCost() {
+            const hours = parseFloat(document.getElementById('hours').value) || 0;
+            const staff = parseFloat(document.getElementById('staff').value) || 0;
+            const cost = parseFloat(document.getElementById('cost').value) || 0;
+            
+            if (hours === 0 || staff === 0 || cost === 0) {
+                alert('Please fill in all fields to calculate administrative burden.');
+                return;
+            }
+            
+            const monthlyComplianceCost = hours * staff * cost;
+            const annualComplianceCost = monthlyComplianceCost * 12;
+            const teachingHoursLost = hours * staff * 12;
+            
+            const resultDiv = document.getElementById('cost-result');
+            resultDiv.innerHTML = `
+                <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
+                    <h4 style="margin-bottom: 15px; color: #856404;">Administrative Burden Analysis</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div>
+                            <strong>Monthly Impact:</strong> ₹${monthlyComplianceCost.toLocaleString()}
+                        </div>
+                        <div>
+                            <strong>Annual Impact:</strong> ₹${annualComplianceCost.toLocaleString()}
+                        </div>
+                        <div>
+                            <strong>Time Invested:</strong> ${teachingHoursLost.toLocaleString()} hours/year
+                        </div>
+                        <div>
+                            <strong>Work Days:</strong> ${Math.floor(teachingHoursLost/8)} days/year
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 5px;">
+                        <small style="color: #856404;">
+                            <strong>Insight:</strong> This represents ${Math.floor(teachingHoursLost/8)} full working days annually 
+                            allocated to administrative activities. Consider how this time could be utilized for academic, clinical, or research advancement.
+                        </small>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Proposal functionality
+        function generateProposal() {
+            const title = document.getElementById('proposal-title').value.trim();
+            const category = document.getElementById('proposal-category').value;
+            const problem = document.getElementById('current-problem').value.trim();
+            const solution = document.getElementById('proposed-solution').value.trim();
+            const benefits = document.getElementById('expected-benefits').value.trim();
+            const data = document.getElementById('supporting-data').value.trim();
+            const implementation = document.getElementById('implementation').value.trim();
+            
+            if (!title || !problem || !solution) {
+                alert('Please fill in at least the title, current situation, and proposed solution.');
+                return;
+            }
+            
+            const proposal = {
+                id: Date.now(),
+                title: title,
+                category: category,
                 problem: problem,
                 solution: solution,
                 benefits: benefits,
                 data: data,
                 implementation: implementation,
-                createdDate: new Date().toISOString().split('T')[0],
-                author: 'Anonymous Reformer'
+                createdDate: new Date().toISOString().split('T')[0]
             };
             
-            proposals.push(newProposal);
+            proposals.push(proposal);
             localStorage.setItem('proposals', JSON.stringify(proposals));
             
             const proposalContent = `
                 <div style="font-family: Arial, sans-serif; line-height: 1.8; color: #333; max-height: 500px; overflow-y: auto;">
                     <div style="text-align: center; margin-bottom: 30px; padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px;">
                         <h2 style="margin: 0; font-size: 24px;">${title}</h2>
-                        <p style="margin: 10px 0 0 0; opacity: 0.9;">Ayurveda Education Reform Proposal</p>
+                        <p style="margin: 10px 0 0 0; opacity: 0.9;">Reform Category: ${category}</p>
+                        <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">Dr. Kembhavi's Voice of Ayurveda Platform</p>
                     </div>
                     
                     <div style="background: #f8f9fa; padding: 20px; margin: 20px 0; border-left: 4px solid #dc3545; border-radius: 5px;">
-                        <h3 style="color: #dc3545; margin: 0 0 15px 0;">🚨 Current Problem Statement</h3>
+                        <h3 style="color: #dc3545; margin: 0 0 15px 0;">📋 Current Situation/Challenge</h3>
                         <p style="margin: 0; line-height: 1.6;">${problem}</p>
                     </div>
                     
                     <div style="background: #e8f5e8; padding: 20px; margin: 20px 0; border-left: 4px solid #28a745; border-radius: 5px;">
-                        <h3 style="color: #28a745; margin: 0 0 15px 0;">💡 Proposed Solution</h3>
+                        <h3 style="color: #28a745; margin: 0 0 15px 0;">💡 Proposed Reform/Solution</h3>
                         <p style="margin: 0; line-height: 1.6;">${solution}</p>
                     </div>
                     
@@ -902,25 +1078,24 @@
                     
                     ${implementation ? `
                     <div style="background: #f3e5f5; padding: 20px; margin: 20px 0; border-left: 4px solid #6f42c1; border-radius: 5px;">
-                        <h3 style="color: #492b6e; margin: 0 0 15px 0;">⏱️ Implementation Timeline</h3>
+                        <h3 style="color: #492b6e; margin: 0 0 15px 0;">⚙️ Implementation Approach</h3>
                         <p style="margin: 0; line-height: 1.6;">${implementation}</p>
                     </div>` : ''}
                     
                     <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px; text-align: center;">
                         <p style="margin: 0; font-style: italic; font-size: 16px;">
-                            "The arc of the moral universe is long, but it bends toward justice." 
-                            <br><strong>- Martin Luther King Jr.</strong>
+                            "Progress is impossible without change, and those who cannot change their minds cannot change anything."
                         </p>
                     </div>
                     
                     <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px; text-align: center; color: #666;">
                         <p style="margin: 0;">
                             <strong>Generated:</strong> ${new Date().toLocaleDateString()} | 
-                            <strong>Proposal ID:</strong> AER-${newProposal.id} |
-                            <strong>Status:</strong> Draft for Review
+                            <strong>Proposal ID:</strong> DVA-${proposal.id} |
+                            <strong>Category:</strong> ${category}
                         </p>
                         <p style="margin: 5px 0 0 0; font-size: 14px;">
-                            Ayurveda Education Reform Platform | Reclaiming Our Sacred Purpose
+                            Dr. Kembhavi's Voice of Ayurveda Platform
                         </p>
                     </div>
                 </div>
@@ -929,16 +1104,62 @@
             document.getElementById('proposal-content').innerHTML = proposalContent;
             document.getElementById('generated-proposal').style.display = 'block';
             
-            updatePlatformStats();
-            
-            // Show success notification
-            alert(`Reform proposal "${title}" has been generated! This is proposal #${proposals.length} in our growing collection.`);
+            updateStats();
+            alert(`Reform proposal "${title}" has been generated successfully!`);
         }
         
-        // Initialize stats when page loads
-        setTimeout(updatePlatformStats, 1000);
+        function copyProposal() {
+            const content = document.getElementById('proposal-content').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Proposal copied to clipboard! You can now paste it into your documents.');
+            }).catch(() => {
+                alert('Please manually select and copy the proposal text.');
+            });
+        }
         
-        // Update year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // Statistics update
+        function updateStats() {
+            document.getElementById('total-posts').textContent = posts.length;
+            document.getElementById('active-discussions').textContent = posts.filter(p => {
+                const postDate = new Date(p.date);
+                const thirtyDaysAgo = new Date();
+                thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                return postDate >= thirtyDaysAgo;
+            }).length;
+            document.getElementById('reform-proposals').textContent = proposals.length;
+            
+            let totalEngagement = posts.length + coalitionMembers.length + proposals.length + campaigns.length;
+            document.getElementById('total-engagement').textContent = totalEngagement;
+        }
+        
+        // Load data from localStorage on page load
+        function loadData() {
+            try {
+                posts = JSON.parse(localStorage.getItem('forum_posts') || '[]');
+                coalitionMembers = JSON.parse(localStorage.getItem('coalition_members') || '[]');
+                campaigns = JSON.parse(localStorage.getItem('campaigns') || '[]');
+                proposals = JSON.parse(localStorage.getItem('proposals') || '[]');
+                inspections = JSON.parse(localStorage.getItem('inspections') || '[]');
+            } catch (error) {
+                console.log('Starting with fresh data');
+            }
+            
+            displayPosts();
+            displayInspections();
+            updateCoalitionStats();
+            updateStats();
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
     </script>
+    
+    <!-- Load external scripts -->
+    <script src="app.js"></script>
+    <script src="auth.js"></script>
+    <script src="whatsapp-integration.js"></script>
+</body>
 </html>
