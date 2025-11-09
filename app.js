@@ -1,5 +1,5 @@
-// Ayurveda Education Reform Platform - Advanced Features
-// This file adds enhanced functionality to the platform
+// Dr. Kembhavi's Voice of Ayurveda Platform - Clean Core Functions
+// No dummy data - starts completely fresh
 
 // Data storage using browser's local storage (persists data between sessions)
 class PlatformStorage {
@@ -25,43 +25,9 @@ class PlatformStorage {
 // Enhanced Forum Management
 class ForumManager {
     constructor() {
-        this.posts = PlatformStorage.loadData('forum_posts', this.getDefaultPosts());
+        // Start with empty array - no dummy posts
+        this.posts = PlatformStorage.loadData('forum_posts', []);
         this.reactions = PlatformStorage.loadData('post_reactions', {});
-    }
-    
-    getDefaultPosts() {
-        return [
-            {
-                id: 1,
-                author: "Anonymous Principal",
-                date: "2025-01-15",
-                category: "regulatory",
-                subject: "NCISM Documentation Burden - A Principal's Perspective",
-                content: "In 20 years of running an Ayurveda college, I've never seen such administrative burden. Last inspection required 347 documents. Our teachers spent 3 months preparing instead of teaching. Students are suffering.",
-                reactions: { support: 12, helpful: 8, concerned: 15 },
-                replies: []
-            },
-            {
-                id: 2,
-                author: "Anonymous Faculty",
-                date: "2025-01-14",
-                category: "teaching",
-                subject: "Lost the Joy of Teaching Ayurveda",
-                content: "I became an Ayurveda teacher to share ancient wisdom and heal. Now I spend 70% of my time on compliance paperwork. My students see my stress and lose respect for this beautiful system. We need change NOW.",
-                reactions: { support: 28, helpful: 5, concerned: 22 },
-                replies: []
-            },
-            {
-                id: 3,
-                author: "Anonymous Student",
-                date: "2025-01-13",
-                category: "support",
-                subject: "Student Perspective: We're Not Learning, We're Just Passing Exams",
-                content: "Our professors are always stressed about inspections. We get photocopied notes instead of passionate teaching. I chose Ayurveda to learn healing, but I'm learning bureaucracy instead.",
-                reactions: { support: 31, helpful: 12, concerned: 18 },
-                replies: []
-            }
-        ];
     }
     
     addPost(postData) {
@@ -144,38 +110,9 @@ class CoalitionManager {
 // Compliance Tracker
 class ComplianceTracker {
     constructor() {
-        this.inspections = PlatformStorage.loadData('inspections', this.getDefaultInspections());
+        // Start with empty array - no default inspections
+        this.inspections = PlatformStorage.loadData('inspections', []);
         this.costs = PlatformStorage.loadData('compliance_costs', {});
-    }
-    
-    getDefaultInspections() {
-        return [
-            {
-                id: 1,
-                type: 'NCISM Annual Inspection',
-                date: '2025-01-15',
-                status: 'completed',
-                documentsRequired: 47,
-                hoursSpent: 240,
-                outcome: 'Approved with observations'
-            },
-            {
-                id: 2,
-                type: 'QCI Quality Assessment',
-                date: '2025-03-15',
-                status: 'upcoming',
-                documentsRequired: 32,
-                preparationDays: 45
-            },
-            {
-                id: 3,
-                type: 'NAAC Accreditation Review',
-                date: '2025-06-20',
-                status: 'scheduled',
-                documentsRequired: 89,
-                preparationDays: 90
-            }
-        ];
     }
     
     calculateTotalComplianceCost(hours, staff, costPerHour) {
@@ -207,44 +144,10 @@ class ComplianceTracker {
     }
 }
 
-// Reform Proposal Generator with Templates
+// Reform Proposal Generator
 class ProposalGenerator {
     constructor() {
         this.proposals = PlatformStorage.loadData('proposals', []);
-        this.templates = this.getProposalTemplates();
-    }
-    
-    getProposalTemplates() {
-        return {
-            documentation: {
-                title: "Streamlining Documentation Requirements",
-                problem: "Current documentation requirements are excessive and repetitive, taking valuable time away from actual teaching and learning.",
-                solution: "Implement a unified digital documentation system with automated reporting features to reduce manual paperwork by 60%."
-            },
-            inspection: {
-                title: "Reforming Inspection Frequency and Process",
-                problem: "Multiple overlapping inspections throughout the year create a perpetual state of preparation mode, disrupting academic calendar.",
-                solution: "Coordinate all regulatory inspections into a single comprehensive annual review with standardized criteria."
-            },
-            teaching: {
-                title: "Protecting Teaching Time and Academic Freedom",
-                problem: "Excessive compliance requirements are reducing actual teaching hours and constraining pedagogical innovation.",
-                solution: "Establish protected teaching time blocks where compliance activities are prohibited, ensuring minimum contact hours with students."
-            }
-        };
-    }
-    
-    generateFromTemplate(templateKey, customizations = {}) {
-        const template = this.templates[templateKey];
-        if (!template) return null;
-        
-        return {
-            ...template,
-            ...customizations,
-            id: Date.now(),
-            createdDate: new Date().toISOString().split('T')[0],
-            status: 'draft'
-        };
     }
     
     saveProposal(proposalData) {
@@ -358,7 +261,9 @@ document.addEventListener('DOMContentLoaded', function() {
     notificationManager = new NotificationManager();
     
     // Load initial data
-    displayPosts();
+    if (typeof displayPosts === 'function') {
+        displayPosts();
+    }
     coalitionManager.updateStats();
     
     // Add CSS animations
@@ -397,38 +302,13 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
-        .proposal-templates {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .template-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .template-card:hover {
-            background: #e9ecef;
-            transform: translateY(-2px);
-        }
     `;
     document.head.appendChild(style);
     
-    // Welcome notification
-    notificationManager.addNotification(
-        'Welcome!', 
-        'Welcome to the Ayurveda Education Reform Platform. Your voice matters in reclaiming our sacred purpose.',
-        'normal'
-    );
+    // NO welcome notification for clean start
 });
 
-// Enhanced functions to replace the basic ones in HTML
+// Enhanced functions that work with the managers
 
 function submitPost() {
     const subject = document.getElementById('subject').value;
@@ -442,57 +322,59 @@ function submitPost() {
     }
     
     const newPost = forumManager.addPost({
-        author: anonymity === 'anonymous' ? 'Anonymous Educator' : 'Registered User',
+        author: anonymity === 'anonymous' ? 'Anonymous Contributor' : 'Registered User',
         category: category,
         subject: subject,
         content: message
     });
     
-    displayPosts();
+    if (typeof displayPosts === 'function') {
+        displayPosts();
+    }
     
     // Clear form
     document.getElementById('subject').value = '';
     document.getElementById('message').value = '';
     
-    notificationManager.addNotification(
-        'Post Submitted', 
-        'Your voice has been added to the forum. Together we can create change.',
-        'normal'
-    );
+    if (notificationManager) {
+        notificationManager.addNotification(
+            'Post Submitted', 
+            'Your views have been shared successfully!',
+            'normal'
+        );
+    }
 }
 
 function displayPosts() {
     const container = document.getElementById('posts-container');
+    if (!container) return;
+    
     container.innerHTML = '';
     
-    // Add search bar
-    const searchBar = document.createElement('div');
-    searchBar.className = 'search-bar';
-    searchBar.innerHTML = `
-        <input type="text" id="forum-search" placeholder="Search posts by keyword, category, or content..." 
-               style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-    `;
-    container.appendChild(searchBar);
+    if (forumManager.posts.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">💬</div>
+                <div class="empty-state-text">No discussions yet</div>
+                <div class="empty-state-subtext">Be the first to share your views on Ayurveda reforms!</div>
+            </div>
+        `;
+        return;
+    }
     
-    // Add search functionality
-    document.getElementById('forum-search').addEventListener('input', function(e) {
-        const searchTerm = e.target.value;
-        const filteredPosts = searchTerm ? forumManager.searchPosts(searchTerm) : forumManager.posts;
-        displayFilteredPosts(filteredPosts);
-    });
-    
-    displayFilteredPosts(forumManager.posts);
-}
-
-function displayFilteredPosts(posts) {
-    const existingPosts = document.querySelectorAll('.post-item');
-    existingPosts.forEach(post => post.remove());
-    
-    const container = document.getElementById('posts-container');
-    
-    posts.forEach(post => {
+    forumManager.posts.forEach(post => {
         const postElement = document.createElement('div');
         postElement.className = 'post-item';
+        
+        const categoryLabels = {
+            'academic': 'Academic Reforms',
+            'clinical': 'Clinical Practice',
+            'research': 'Research & Development',
+            'administrative': 'Administrative',
+            'development': 'Development',
+            'regulatory': 'Regulatory'
+        };
+        
         postElement.innerHTML = `
             <div class="post-header">
                 <span class="post-author">${post.author}</span>
@@ -502,16 +384,16 @@ function displayFilteredPosts(posts) {
             <div class="post-content">${post.content}</div>
             <div class="post-reactions">
                 <button class="reaction-btn" onclick="reactToPost(${post.id}, 'support')">
-                    💪 Support (${post.reactions.support})
+                    💪 Support (${post.reactions.support || 0})
                 </button>
                 <button class="reaction-btn" onclick="reactToPost(${post.id}, 'helpful')">
-                    👍 Helpful (${post.reactions.helpful})
+                    👍 Helpful (${post.reactions.helpful || 0})
                 </button>
                 <button class="reaction-btn" onclick="reactToPost(${post.id}, 'concerned')">
-                    😟 Concerned (${post.reactions.concerned})
+                    😟 Concerned (${post.reactions.concerned || 0})
                 </button>
             </div>
-            <span class="post-category">${post.category}</span>
+            <span class="post-category">${categoryLabels[post.category] || post.category}</span>
         `;
         container.appendChild(postElement);
     });
@@ -527,12 +409,17 @@ function calculateComplianceCost() {
     const staff = parseFloat(document.getElementById('staff').value) || 0;
     const cost = parseFloat(document.getElementById('cost').value) || 0;
     
+    if (hours === 0 || staff === 0 || cost === 0) {
+        alert('Please fill in all fields to calculate compliance costs.');
+        return;
+    }
+    
     const result = complianceTracker.calculateTotalComplianceCost(hours, staff, cost);
     
     const resultDiv = document.getElementById('cost-result');
     resultDiv.innerHTML = `
         <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #ffc107;">
-            <h4 style="margin-bottom: 15px; color: #856404;">Compliance Cost Analysis</h4>
+            <h4 style="margin-bottom: 15px; color: #856404;">Administrative Burden Analysis</h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                 <div>
                     <strong>Monthly Cost:</strong> ₹${result.monthly.toLocaleString()}
@@ -544,13 +431,13 @@ function calculateComplianceCost() {
                     <strong>Teaching Hours Lost:</strong> ${result.teachingHoursLost.toLocaleString()} hours/year
                 </div>
                 <div>
-                    <strong>Students Affected:</strong> ${result.studentsAffected.toLocaleString()} student-interactions lost
+                    <strong>Working Days Lost:</strong> ${Math.floor(result.teachingHoursLost/8)} days/year
                 </div>
             </div>
             <div style="margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.7); border-radius: 5px;">
                 <small style="color: #856404;">
-                    <strong>Impact:</strong> This represents ${(result.teachingHoursLost/8).toFixed(0)} full working days per year 
-                    spent on compliance instead of education. Imagine the ancient wisdom that could be shared in that time!
+                    <strong>Impact:</strong> This represents ${Math.floor(result.teachingHoursLost/8)} full working days per year 
+                    spent on compliance instead of education.
                 </small>
             </div>
         </div>
